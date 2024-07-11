@@ -1,4 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Inter', sans-serif;
+    color: #343434;
+}
+
+
+
+.image-effect {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+}
+
+.container {
+    width: 70vw;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background-color: rgb(234, 11, 11);
+}
+
+.timer-container {
+    text-align: center;
+    flex-basis: 50%;
+}
+
+.timer-container button {
+    color: rgb(42 64 84 / .5);
+    background: rgb(132 167 197 / .5);
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.timer-container .modality {
+    font-size: 1.125rem;
+    padding: 0 14px;
+    height: 41px;
+    margin: 0 0 15px 18px;
+}
+
+.active-button {
+    background-color: #84A7C5 !important;
+    color: #2A4054 !important;
+}
+
+.timer-container p {
+    font-size: 6.25rem;
+    font-weight: bold;
+    margin: 30px 0;
+    color: #343434
+}
+
+.timer-container .start {
+    background-color: #84A7C5;
+    font-size: 1.625rem;
+    text-transform: uppercase;
+    width: 200px;
+    height: 55px;
+    box-shadow: 0 2.5px rgb(0 0 0 / .5);
+    color: #2A4054;
 }
