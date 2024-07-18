@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="/src/css/style.css" />
+    <script src="/src/js/timer.js" defer></script>
     <title>Pomodoro Timer</title>
 </head>
 
@@ -14,15 +15,18 @@
         <section class="container">
             <section class="timer-container">
                 <div>
-                    <button class="modality active-button" type="button">Pomodoro</button>
-                    <button class="modality" type="button">Intervalo Curto</button>
-                    <button class="modality" type="button">Intervalo Longo</button>
+                    <button onclick="selectTimer('pomodoro')" id="pomodoro" class="modality active-button"
+                        type="button">Pomodoro</button>
+                    <button onclick="selectTimer('short-break')" id="short-break" class="modality"
+                        type="button">Intervalo Curto</button>
+                    <button onclick="selectTimer('long-break')" id="long-break" class="modality" type="button">Intervalo
+                        Longo</button>
                 </div>
                 <div>
                     <p id="counter">25:00</p>
                 </div>
                 <div>
-                    <button id="start" class="start" type="button">Começar</button>
+                    <button id="start" class="start" type="button">Iniciar</button>
                 </div>
             </section>
             <div class="divider"></div>
