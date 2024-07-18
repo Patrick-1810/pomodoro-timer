@@ -22,6 +22,14 @@ function changeSelectClasses(timer) {
     }
 }
 
+function secondsToMinutesSeconds(totalSeconds) {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+
+    const padSeconds = seconds.toString().padStart(2, "0");
+    return `${minutes} : ${padSeconds}`;
+}
+
 function getTimerValue(timer) {
     const timerValues = {
         'pomodoro': 25 * 60,
@@ -32,7 +40,8 @@ function getTimerValue(timer) {
 }
 
 function changeTimerValue(timer) {
-    timerParagraph.textContent = getTimerValue(timer);
+    const timerValueInSeconds = getTimerValue(timer);
+    timerParagraph.textContent = secondsToMinutesSeconds(timerValueInSeconds);
 }
 
 function selectTimer(timer) {
@@ -41,3 +50,11 @@ function selectTimer(timer) {
     changeSelectClasses(timer);
     changeTimerValue(timer);
 }
+
+
+pomodoroSelect.addEventListener('click', () => selectTimer('pomodoro'));
+shortBreakSelect.addEventListener('click', () => selectTimer('short-break'));
+longBreakSelect.addEventListener('click', () => selectTimer('long-break'));
+
+
+changeTimerValue(selectedTimer);
