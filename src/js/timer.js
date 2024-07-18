@@ -5,6 +5,7 @@ const startButton = document.querySelector('#start');
 const timerParagraph = document.querySelector('#counter');
 
 let selectedTimer = "pomodoro";
+let timerInterval;
 
 function changeSelectClasses(timer) {
     if (timer === 'pomodoro') {
@@ -27,7 +28,7 @@ function secondsToMinutesSeconds(totalSeconds) {
     const seconds = totalSeconds % 60;
 
     const padSeconds = seconds.toString().padStart(2, "0");
-    return `${minutes} : ${padSeconds}`;
+    return `${minutes}:${padSeconds}`;
 }
 
 function getTimerValue(timer) {
@@ -51,10 +52,27 @@ function selectTimer(timer) {
     changeTimerValue(timer);
 }
 
+function startTimer(timer) {
+    let seconds = getTimerValue(timer);
+
+    if (timerInterval) {
+        clearInterval(timerInterval);
+    }
+
+    timerInterval = setInterval(() => {
+        if (seconds > 0) {
+            seconds--;
+            timerParagraph.textContent = secondsToMinutesSeconds(seconds);
+        } else {
+            clearInterval(timerInterval);
+        }
+    }, 1000);
+}
 
 pomodoroSelect.addEventListener('click', () => selectTimer('pomodoro'));
 shortBreakSelect.addEventListener('click', () => selectTimer('short-break'));
 longBreakSelect.addEventListener('click', () => selectTimer('long-break'));
 
+startButton.addEventListener('click', () => startTimer(selectedTimer));
 
 changeTimerValue(selectedTimer);
