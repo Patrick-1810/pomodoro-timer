@@ -151,3 +151,21 @@
 .tasks-list ol::-webkit-scrollbar {
     visibility: hidden;
 }
+
+.tasks-list .task-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tasks-list .task-container:not(:last-child) {
+    border: 1px solid var(--placeholder-color);
+}
+
+.tasks-list .task-container button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
