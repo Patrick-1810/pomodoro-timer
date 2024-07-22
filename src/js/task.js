@@ -9,10 +9,16 @@ addTaskButton.addEventListener('click', () =>{
     addTaskButton(newTask);
 });
 
+function renderTask(newTask){
+    
+}
+
+
 function addTask(task){
       const newTask = {
         id : Math.random().toString(16).slice(2),
         text : task
       }
-
+    
+      renderTask(newTask);
 }
