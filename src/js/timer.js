@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const startButton = document.querySelector('#start');
     const timerParagraph = document.querySelector('#counter');
 
-    const audio = new Audio('sounds/musicRelax.mp3');
+    const audioRelax = new Audio('sounds/musicRelax.mp3');
+    const audioAlarm = new Audio('sounds/somAlarme.mp3'); 
 
     let selectedTimer = "pomodoro";
     let timerInterval;
@@ -58,8 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function startTimer(timer) {
         let seconds = getTimerValue(timer);
 
-        audio.currentTime = 0;
-        audio.play();
+        audioRelax.currentTime = 0;
+        audioRelax.play();
 
         if (timerInterval) {
             clearInterval(timerInterval);
@@ -71,9 +72,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 timerParagraph.textContent = secondsToMinutesSeconds(seconds);
             } else {
                 clearInterval(timerInterval);
-                audio.pause();
+                audioRelax.pause();
+                playAlarm();
             }
         }, 1000);
+    }
+
+    function playAlarm() {
+        audioAlarm.currentTime = 0;
+        audioAlarm.play();
+
+        setTimeout(() => {
+            audioAlarm.pause();
+        }, 5000); 
     }
 
     pomodoroSelect.addEventListener('click', () => selectTimer('pomodoro'));
