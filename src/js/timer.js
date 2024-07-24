@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const startButton = document.querySelector('#start');
     const timerParagraph = document.querySelector('#counter');
 
+    const audio = new Audio('sounds/musicRelax.mp3');
+
     let selectedTimer = "pomodoro";
     let timerInterval;
 
@@ -56,6 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function startTimer(timer) {
         let seconds = getTimerValue(timer);
 
+        audio.currentTime = 0;
+        audio.play();
+
         if (timerInterval) {
             clearInterval(timerInterval);
         }
@@ -66,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 timerParagraph.textContent = secondsToMinutesSeconds(seconds);
             } else {
                 clearInterval(timerInterval);
+                audio.pause();
             }
         }, 1000);
     }
